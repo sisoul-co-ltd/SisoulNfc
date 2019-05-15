@@ -29,7 +29,7 @@ author = 'Kim Youngseon'
 # ones.
 extensions = [
     'sphinx.ext.intersphinx',
-    'sphinx.ext.autodoc'
+    'sphinx.ext.autodoc',
     'sphinx.ext.githubpages'
 ]
 
