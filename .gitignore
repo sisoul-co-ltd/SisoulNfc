@@ -1,0 +1,10 @@
+/.idea/
+/build/
+/dist/
+/venv_mac/
+/apidoc/_build/
+/apidoc/_static/
+/apidoc/_templates/
+/SisoulNfc.egg-info/
+.DS_Store
+__pycache__

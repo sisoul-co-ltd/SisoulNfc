@@ -1,0 +1,38 @@
+sudo: false
+
+language: python
+
+python:
+  - 3.5
+  - 3.6
+  - pypy3
+
+compiler:
+  - gcc
+  - clang
+cache: ccache
+
+addons:
+  apt:
+    packages:
+      - libusb-1.0.0-dev
+      - libudev-dev
+
+install:
+  - python setup.py install
+  - pip install -r apidoc/requirements.txt
+
+script:
+  - python tests/run_test.py
+  - cd apidoc
+  - make html
+  - cd ..
+
+deploy:
+- provider: pages
+  skip_cleanup: true
+  local_dir: apidoc/_build/html
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  keep-history: true
+  on:
+    branch: master
