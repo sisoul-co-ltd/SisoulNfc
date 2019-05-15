@@ -1,0 +1,1295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pysisoulnfc package &mdash; Python Sisoul NFC Module  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Python Sisoul NFC documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Python Sisoul NFC Module
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pysisoulnfc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pysisoulnfc.nfc">pysisoulnfc.nfc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pysisoulnfc">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#read-the-mifare-classic">Read the Mifare Classic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sisoul-fingerprints-card">Sisoul Fingerprints card.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python Sisoul NFC Module</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>pysisoulnfc package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pysisoulnfc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pysisoulnfc-package">
+<h1>pysisoulnfc package<a class="headerlink" href="#pysisoulnfc-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pysisoulnfc.nfc">
+<span id="pysisoulnfc-nfc-module"></span><h2>pysisoulnfc.nfc module<a class="headerlink" href="#module-pysisoulnfc.nfc" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command">
+<em class="property">class </em><code class="descclassname">pysisoulnfc.nfc.</code><code class="descname">Command</code><a class="headerlink" href="#pysisoulnfc.nfc.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>NFC Control API</p>
+<dl class="exception">
+<dt id="pysisoulnfc.nfc.Command.Error">
+<em class="property">exception </em><code class="descname">Error</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType1">
+<em class="property">class </em><code class="descname">NfcTagAppType1</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type1 Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType1.TOPAZ_DYNAMIC">
+<code class="descname">TOPAZ_DYNAMIC</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType1.TOPAZ_DYNAMIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topaz dynamic memory structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType1.TOPAZ_STATIC">
+<code class="descname">TOPAZ_STATIC</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType1.TOPAZ_STATIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topaz static memory structure.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType2">
+<em class="property">class </em><code class="descname">NfcTagAppType2</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type2 Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType2.MIFARE_UL">
+<code class="descname">MIFARE_UL</code><em class="property"> = 33</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType2.MIFARE_UL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Ultralight</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppType2.MIFARE_ULC">
+<code class="descname">MIFARE_ULC</code><em class="property"> = 35</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType2.MIFARE_ULC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Ultralight C</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic">
+<em class="property">class </em><code class="descname">NfcTagAppTypeMiFareClassic</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>Mifare Classic Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_1K">
+<code class="descname">MIFARE_1K</code><em class="property"> = 18</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_1K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Classic 1K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_4K">
+<code class="descname">MIFARE_4K</code><em class="property"> = 19</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Classic 4K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_MINI">
+<code class="descname">MIFARE_MINI</code><em class="property"> = 17</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_MINI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Mini.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_2K">
+<code class="descname">MIFARE_PLUS_2K</code><em class="property"> = 20</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_2K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus 2K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_4K">
+<code class="descname">MIFARE_PLUS_4K</code><em class="property"> = 21</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus 4K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_2K">
+<code class="descname">MIFARE_PLUS_SL2_2K</code><em class="property"> = 23</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_2K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus SL2 2K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_4K">
+<code class="descname">MIFARE_PLUS_SL2_4K</code><em class="property"> = 22</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus SL2 4K</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType">
+<em class="property">class </em><code class="descname">NfcTagType</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType.TYPE1">
+<code class="descname">TYPE1</code><em class="property"> = 1</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType.TYPE1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type1 Tag is compatible Topaz</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType.TYPE2">
+<code class="descname">TYPE2</code><em class="property"> = 2</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType.TYPE2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type2 Tag is compatible Mifare Family (UL, ULC, Classic)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType.TYPE3">
+<code class="descname">TYPE3</code><em class="property"> = 4</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType.TYPE3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type3 Tag is compatible Felica.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType.TYPE4">
+<code class="descname">TYPE4</code><em class="property"> = 8</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType.TYPE4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type4 Tag is compatible Application Type Card (VISA, MASTER, T-Money, Cashbee..)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTagType.TYPE5">
+<code class="descname">TYPE5</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagType.TYPE5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type5 Tag is compatible ICODE SLI(x), Tag-It HF-I</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.NfcTech">
+<em class="property">class </em><code class="descname">NfcTech</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTech" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Technology Protocol</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTech.ISO14443A">
+<code class="descname">ISO14443A</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTech.ISO14443A" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO14443A (NFC-A)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTech.ISO14443B">
+<code class="descname">ISO14443B</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTech.ISO14443B" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO14443B (NFC-B)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTech.ISO15693">
+<code class="descname">ISO15693</code><em class="property"> = 128</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTech.ISO15693" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO15693 (NFC-V)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.NfcTech.ISO18092">
+<code class="descname">ISO18092</code><em class="property"> = 64</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTech.ISO18092" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO18092 (NFC-F)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.nfc.Command.STATUS">
+<em class="property">class </em><code class="descname">STATUS</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.FAILURE">
+<code class="descname">FAILURE</code><em class="property"> = 17</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Failure</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.FROM_REMOTE_DEVICE">
+<code class="descname">FROM_REMOTE_DEVICE</code><em class="property"> = 66</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.FROM_REMOTE_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error from Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.GOING_TO_RESET">
+<code class="descname">GOING_TO_RESET</code><em class="property"> = 128</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.GOING_TO_RESET" title="Permalink to this definition">¶</a></dt>
+<dd><p>SMCP reset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.INVALID_PARAM">
+<code class="descname">INVALID_PARAM</code><em class="property"> = 21</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.INVALID_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter is invalid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.LOST_REMOTE_DEVICE">
+<code class="descname">LOST_REMOTE_DEVICE</code><em class="property"> = 81</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.LOST_REMOTE_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lost Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.NDEF_READ_FAIL">
+<code class="descname">NDEF_READ_FAIL</code><em class="property"> = 67</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.NDEF_READ_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>NDEF Read fail.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.NDEF_WRITE_FAIL">
+<code class="descname">NDEF_WRITE_FAIL</code><em class="property"> = 68</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.NDEF_WRITE_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>NDEF Write fail.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.NOT_AUTH">
+<code class="descname">NOT_AUTH</code><em class="property"> = 65</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.NOT_AUTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Need Authenticate from Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.OK">
+<code class="descname">OK</code><em class="property"> = 1</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Okay!! but it’s not complete process.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.REJECT_COMMAND">
+<code class="descname">REJECT_COMMAND</code><em class="property"> = 20</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.REJECT_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejected command from SMCP.</p>
+<p>ex) Send command the discovery start if already started.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.SUCCESS">
+<code class="descname">SUCCESS</code><em class="property"> = 0</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Success.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.SYSTEM_MEMORY">
+<code class="descname">SYSTEM_MEMORY</code><em class="property"> = 18</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.SYSTEM_MEMORY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Out of memory in SMCP</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.TIMED_OUT">
+<code class="descname">TIMED_OUT</code><em class="property"> = 22</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.TIMED_OUT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response timed out.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.TRANSFER_BCC">
+<code class="descname">TRANSFER_BCC</code><em class="property"> = 49</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.TRANSFER_BCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>BCC error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.TRANSFER_PACKET">
+<code class="descname">TRANSFER_PACKET</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.TRANSFER_PACKET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Packet error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNKNOWN">
+<code class="descname">UNKNOWN</code><em class="property"> = 255</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown Error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_COMMAND">
+<code class="descname">UNSUPPORTED_COMMAND</code><em class="property"> = 34</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Command is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_FUNCTION">
+<code class="descname">UNSUPPORTED_FUNCTION</code><em class="property"> = 19</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_FUNCTION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_GROUP">
+<code class="descname">UNSUPPORTED_GROUP</code><em class="property"> = 33</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_GROUP" title="Permalink to this definition">¶</a></dt>
+<dd><p>the GID is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_PARAM">
+<code class="descname">UNSUPPORTED_PARAM</code><em class="property"> = 35</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Parameter is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_TYPE">
+<code class="descname">UNSUPPORTED_TYPE</code><em class="property"> = 36</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.UNSUPPORTED_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Type is not supported.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.apdu_tranceive">
+<code class="descname">apdu_tranceive</code><span class="sig-paren">(</span><em>capdu</em><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.nfc.Command.apdu_tranceive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exchange APDUs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>capdu</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – The APDU to transfer to the card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="pysisoulnfc.nfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): APDU received from card</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the application cards.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.buzzer">
+<code class="descname">buzzer</code><span class="sig-paren">(</span><em>hz</em>, <em>ms</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.buzzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>buzzer control in SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hz</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – 1: 1khz, 2: 2khz, 3: 2.7khz</p></li>
+<li><p><strong>ms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The time the buzzer rings for milliseconds (100 ~ 65535)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.nfc.Command.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect USB HID Class connection for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.conf_reactive">
+<code class="descname">conf_reactive</code><span class="sig-paren">(</span><em>is_set=True</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.conf_reactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set Reactivate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <p>If True, the SMCP-IV attempts to reactivate the remote device to determine
+if it has been disappeared.</p>
+<p>If False, the SMCP-IV does not reactivate after the remote device is first activated.</p>
+<p>In this case, you do not know if the remote device has disappeared.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.discovery">
+<code class="descname">discovery</code><span class="sig-paren">(</span><em>tech=240</em>, <em>start=True</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts or ends a remote device search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tech</strong> (<a class="reference internal" href="#pysisoulnfc.nfc.Command.NfcTech" title="pysisoulnfc.nfc.Command.NfcTech"><em>NfcTech</em></a>) – <p>The NFC technology of the remote device to discover.</p>
+<p>Default value is (NfcTech.ISO14443A | NfcTech.ISO14443B | NfcTech.ISO18092 | NfcTech.ISO15693)</p>
+</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, start the discover. Or False to stop the discover.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.firmware_download">
+<code class="descname">firmware_download</code><span class="sig-paren">(</span><em>stream</em>, <em>fwdn_callback</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pysisoulnfc.nfc.Command.firmware_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the firmware for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<em>typing.io</em>) – stream of firmware binary</p></li>
+<li><p><strong>fwdn_callback</strong> (<em>function</em>) – <p>callback function.</p>
+<p>This function will be called with the length transmitted when one packet is complete.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>If the firmware was successfully transferred, it will return True.</p>
+<p>If it fails, it will return False.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+<dt class="field-even">Raise</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.get_dev_info">
+<code class="descname">get_dev_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict[str, Union[int, Any]]<a class="headerlink" href="#pysisoulnfc.nfc.Command.get_dev_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get version information of SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl>
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="pysisoulnfc.nfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>name: The name of SMCP-IV. This value is always SMCP-IV.</p>
+<p>major: It is a major version of the SMCP-IV firmware.</p>
+<p>minor: It is a minor version of the SMCP-IV firmware.</p>
+<p>build: It is a build number of the SMCP-IV firmware version.</p>
+<p>date: This is the date the SMCP-IV firmware was built.</p>
+<p>time: This is the time the SMCP-IV firmware was built.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.get_ports">
+<code class="descname">get_ports</code><span class="sig-paren">(</span><em>serial=None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#pysisoulnfc.nfc.Command.get_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve serial numbers of SMCP-IV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>serial</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>specified serial number of SMCP-IV.
+If you specify a serial number, it will find and return the SMCP-IV for that serial number.</p>
+<p>Default value is None.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of serial numbers of SMCP-IV.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.open" title="pysisoulnfc.nfc.Command.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pysisoulnfc.nfc.Command.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the connection with SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.led">
+<code class="descname">led</code><span class="sig-paren">(</span><em>blue</em>, <em>red</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.led" title="Permalink to this definition">¶</a></dt>
+<dd><p>led control in SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blue</strong> – Blue led control. 1: on, 0: off</p></li>
+<li><p><strong>red</strong> – Red led control. 1: on, 0: off</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_auth">
+<code class="descname">mifare_auth</code><span class="sig-paren">(</span><em>blk_no</em>, <em>key_type</em>, <em>key</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt MiFare card authentication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>key_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The key type of the block to be authenticated. If the value is 1, it is Key_A. 2 is Key_B.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – The key of the block to be authenticated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_decrement">
+<code class="descname">mifare_decrement</code><span class="sig-paren">(</span><em>blk_no</em>, <em>value</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrease the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The value to be decreased</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_increment">
+<code class="descname">mifare_increment</code><span class="sig-paren">(</span><em>blk_no</em>, <em>value</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_increment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The value to be increased</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_read">
+<code class="descname">mifare_read</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; Dict[pysisoulnfc.nfc.Command.STATUS, Optional[bytes]]<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data read from Mifare card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="pysisoulnfc.nfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): The data read from card</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_restore">
+<code class="descname">mifare_restore</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_transfer">
+<code class="descname">mifare_transfer</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.mifare_write">
+<code class="descname">mifare_write</code><span class="sig-paren">(</span><em>blk_no</em>, <em>data</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.mifare_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data writes to Mifare card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – Data to write the card.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_increment" title="pysisoulnfc.nfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_decrement" title="pysisoulnfc.nfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_restore" title="pysisoulnfc.nfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_transfer" title="pysisoulnfc.nfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_auth" title="pysisoulnfc.nfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.ndef_read">
+<code class="descname">ndef_read</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.nfc.Command.ndef_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads NDEF data from the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="pysisoulnfc.nfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>ndef(bytes): NDEF data read from the card.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.ndef_write" title="pysisoulnfc.nfc.Command.ndef_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.read" title="pysisoulnfc.nfc.Command.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Nfc Forum Tag type.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.ndef_write">
+<code class="descname">ndef_write</code><span class="sig-paren">(</span><em>ndef</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.ndef_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes NDEF data to the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ndef</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – NDEF data to write the card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.ndef_read" title="pysisoulnfc.nfc.Command.ndef_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.write" title="pysisoulnfc.nfc.Command.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Nfc Forum Tag type.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.open">
+<code class="descname">open</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.nfc.Command.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect USB HID Class for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – serial number of SMCP-IV.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raise</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.get_ports" title="pysisoulnfc.nfc.Command.get_ports"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_ports()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>block</em><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.nfc.Command.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads one block of the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS.SUCCESS" title="pysisoulnfc.nfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): Data read from the card.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.write" title="pysisoulnfc.nfc.Command.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.ndef_read" title="pysisoulnfc.nfc.Command.ndef_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_read" title="pysisoulnfc.nfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.set_callbacks">
+<code class="descname">set_callbacks</code><span class="sig-paren">(</span><em>discovery: Callable[[int, dict], None] = None, error: Callable[[int, bytes], None] = None, debug: Callable[[int, str], None] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.nfc.Command.set_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register event callback functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>discovery</strong> (<em>Callable</em>) – <p>Callback function for discovery event.</p>
+<p>Called when a card is found or lost.</p>
+</p></li>
+<li><p><strong>error</strong> (<em>Callable</em>) – Callback function for error event.</p></li>
+<li><p><strong>debug</strong> (<em>Callable</em>) – Callback function for debug messages sent from SMCP-IV.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.nfc.Command.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>block</em>, <em>data</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.nfc.Command.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one block of the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of card.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – Data to write the card.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.nfc.Command.STATUS" title="pysisoulnfc.nfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.nfc.Command.read" title="pysisoulnfc.nfc.Command.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.ndef_write" title="pysisoulnfc.nfc.Command.ndef_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.nfc.Command.mifare_write" title="pysisoulnfc.nfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pysisoulnfc">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pysisoulnfc" title="Permalink to this headline">¶</a></h2>
+<p>SISOUL NFC Module - SMCP-IV</p>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-the-mifare-classic">
+<h3>Read the Mifare Classic<a class="headerlink" href="#read-the-mifare-classic" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">pysisoulnfc.nfc</span> <span class="k">import</span> <span class="n">Command</span>
+
+<span class="n">discovery_msg</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">discovered</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">discovery_msg</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;colbit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Collision!!!&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="n">discovery_msg</span> <span class="o">=</span> <span class="n">msg</span>
+            
+    <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">LOST_REMOTE_DEVICE</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lost Remote Device&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    
+    
+<span class="k">def</span> <span class="nf">mifare_read</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">discovery_msg</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">discovery_msg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">discovery_msg</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;UID: &#39;</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02X}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">discovery_msg</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">]))</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="o">.</span><span class="n">TYPE2</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">Command</span><span class="o">.</span><span class="n">NfcTagAppTypeMiFareClassic</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">discovery_msg</span><span class="p">[</span><span class="s1">&#39;app_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">e</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="n">Command</span><span class="o">.</span><span class="n">NfcTagAppTypeMiFareClassic</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+                                <span class="k">if</span> <span class="n">b</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">cmd</span><span class="o">.</span><span class="n">mifare_auth</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xFF\xFF\xFF\xFF\xFF\xFF</span><span class="s1">&#39;</span><span class="p">)</span> \
+                                        <span class="o">!=</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Authenticate fail - blk: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+                                    <span class="k">continue</span>
+                                
+                                <span class="n">r</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">mifare_read</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                                <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+                                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">: &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02X}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
+                            <span class="k">break</span>
+                    <span class="k">break</span>
+        <span class="n">discovery_msg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">Command</span><span class="p">()</span>
+    <span class="n">serials</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">get_ports</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">serials</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">serials</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">set_callbacks</span><span class="p">(</span><span class="n">discovered</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">discovery</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">mifare_read</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="n">discovery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sisoul-fingerprints-card">
+<h3>Sisoul Fingerprints card.<a class="headerlink" href="#sisoul-fingerprints-card" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">from</span> <span class="nn">pysisoulnfc.nfc</span> <span class="k">import</span> <span class="n">Command</span>
+
+<span class="n">discovery_msg</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">discovered</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">discovery_msg</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">msg</span><span class="p">[</span><span class="s1">&#39;colbit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Collision!!!&#39;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="n">discovery_msg</span> <span class="o">=</span> <span class="n">msg</span>
+            
+    <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">LOST_REMOTE_DEVICE</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lost Remote Device&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SisoulFpcard</span><span class="p">:</span>
+    <span class="n">APDU_SELECT_MF</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xA4\x04\x00\x07\xF0\xAA\x55\x00\x01\x00\x02</span><span class="s1">&#39;</span>
+    <span class="n">APDU_ENROLL</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xA0\x00\x00\x00</span><span class="s1">&#39;</span>
+    <span class="n">APDU_IDENTIFY</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xA1\x00\x00\x00</span><span class="s1">&#39;</span>
+    <span class="n">APDU_DELETE</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xAD\x00\x00\x00</span><span class="s1">&#39;</span>
+    <span class="n">APDU_STATUS</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x00\xB0\x00\x00\x03</span><span class="s1">&#39;</span>
+    
+    <span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">):</span>
+        <span class="n">OK</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">FAIL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="n">BUSY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+        <span class="n">FULL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+        <span class="n">EMPTY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+    
+    <span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">):</span>
+        <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">IDLE</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">ENROLLMENT</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">IDENTIFY</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">DELETE_ALL</span> <span class="o">=</span> <span class="mi">4</span>
+    
+    <span class="k">class</span> <span class="nc">StateDetail</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">):</span>
+        <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ON</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">NEED_FINGER</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">CLEAR_FINGER</span> <span class="o">=</span> <span class="mi">3</span>
+        <span class="n">PROCESSING</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="n">ERROR</span> <span class="o">=</span> <span class="mi">5</span>
+        
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">:</span><span class="n">Command</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span> <span class="o">=</span> <span class="n">cmd</span>
+    
+    <span class="k">def</span> <span class="nf">_processing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">prev_detail</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">StateDetail</span><span class="o">.</span><span class="n">NONE</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">rapdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">apdu_tranceive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APDU_STATUS</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="ow">and</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90\x00</span><span class="s1">&#39;</span><span class="p">:</span>
+                <span class="n">fp_status</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;little&#39;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">fp_state</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;little&#39;</span><span class="p">)</span>
+                <span class="n">fp_detail</span> <span class="o">=</span> <span class="nb">int</span><span class="o">.</span><span class="n">from_bytes</span><span class="p">(</span><span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;little&#39;</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="n">fp_status</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">FAIL</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">elif</span> <span class="n">fp_status</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">BUSY</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">prev_detail</span> <span class="o">==</span> <span class="n">fp_detail</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">prev_detail</span> <span class="o">=</span> <span class="n">fp_detail</span>
+                    <span class="k">if</span> <span class="n">fp_detail</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">StateDetail</span><span class="o">.</span><span class="n">NEED_FINGER</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;please PRESS your finger&#39;</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">fp_detail</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">StateDetail</span><span class="o">.</span><span class="n">CLEAR_FINGER</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;please RELEASE your finger&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">fp_status</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">OK</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+                <span class="k">elif</span> <span class="n">fp_status</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">Status</span><span class="o">.</span><span class="n">EMPTY</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The fingerprint is not enrolled.&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+                
+    <span class="k">def</span> <span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rapdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">apdu_tranceive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APDU_SELECT_MF</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="ow">and</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90\x00</span><span class="s1">&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">def</span> <span class="nf">enroll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rapdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">apdu_tranceive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APDU_ENROLL</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="ow">and</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90\x00</span><span class="s1">&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processing</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">identify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rapdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">apdu_tranceive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APDU_IDENTIFY</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="ow">and</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90\x00</span><span class="s1">&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processing</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">rapdu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">apdu_tranceive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">APDU_DELETE</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmd</span><span class="o">.</span><span class="n">STATUS</span><span class="o">.</span><span class="n">SUCCESS</span> <span class="ow">and</span> <span class="n">rapdu</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">==</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\x90\x00</span><span class="s1">&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processing</span><span class="p">()</span>
+
+    
+<span class="k">def</span> <span class="nf">sisoul_fpcard</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">discovery_msg</span>
+
+    <span class="n">fpcard</span> <span class="o">=</span> <span class="n">SisoulFpcard</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">discovery_msg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">discovery_msg</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;UID: &#39;</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02X}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">discovery_msg</span><span class="p">[</span><span class="s1">&#39;uid&#39;</span><span class="p">]))</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="n">Command</span><span class="o">.</span><span class="n">NfcTagType</span><span class="o">.</span><span class="n">TYPE4</span><span class="p">:</span>
+                    
+                    <span class="k">if</span> <span class="n">fpcard</span><span class="o">.</span><span class="n">select</span><span class="p">():</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Enrollment&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">fpcard</span><span class="o">.</span><span class="n">enroll</span><span class="p">():</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Success&#39;</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Failed&#39;</span><span class="p">)</span>
+                            
+                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Just wait for User</span>
+                        
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Identifying&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">fpcard</span><span class="o">.</span><span class="n">identify</span><span class="p">():</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Success&#39;</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Failed&#39;</span><span class="p">)</span>
+                            
+                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Just wait for User</span>
+                        
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Delete&#39;</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">fpcard</span><span class="o">.</span><span class="n">delete</span><span class="p">():</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Success&#39;</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1"> Failed&#39;</span><span class="p">)</span>
+                    
+        <span class="n">discovery_msg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">Command</span><span class="p">()</span>
+    <span class="n">serials</span> <span class="o">=</span> <span class="n">cmd</span><span class="o">.</span><span class="n">get_ports</span><span class="p">()</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">serials</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">serials</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">set_callbacks</span><span class="p">(</span><span class="n">discovered</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <span class="n">cmd</span><span class="o">.</span><span class="n">discovery</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sisoul_fpcard</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="n">discovery</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cmd</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;End&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Python Sisoul NFC documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sisoul Co., Ltd.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
