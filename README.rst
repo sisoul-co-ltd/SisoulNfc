@@ -4,7 +4,7 @@
 
 Overview
 ========
-This module is for controlling the SMCP-IV produced by Sisoul.
+This module is a Python_ module for controlling SMCP-IV designed by Sisoul.
 
 - Project Homepage: https://github.com/sisoul-co-ltd/SisoulNfc
 - Documentation: https://sisoul-co-ltd.github.io/SisoulNfc/
@@ -25,7 +25,6 @@ Installation
 ``pip install SisoulNfc`` should work for most users.
 
 The usual setup.py for Python_ libraries is used for the source distribution.
-Windows installers are also available (see download link above).
 
 
 .. _Python: http://python.org/
