@@ -592,7 +592,7 @@ class Command:
             self._s.close()
             self._s = None
     
-    def _do_download(self, stream, fwdn_callback):
+    def do_download(self, stream, fwdn_callback):
         data = stream.read()
         page = 0
         while len(data) > 128:
@@ -660,7 +660,7 @@ class Command:
                 print(e)
                 return False
             
-            return self._do_download(stream, fwdn_callback)
+            return self.do_download(stream, fwdn_callback)
         return False
     
     def buzzer(self, hz, ms) -> STATUS:
