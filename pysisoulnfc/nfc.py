@@ -242,12 +242,14 @@ class Message:
 class Command:
     """
     NFC Control API
-    
+
     """
     
     TIME_OUT = 20
     _USB_VID = 0x31CB
-    _USB_PID = 0x00A1
+    _USB_PID = [0x00A1, 0x00A2]
+    
+    _USB_DEVICES = dict()
     
     class STATUS(IntEnum):
         SUCCESS = 0x00  #: Success.
@@ -484,31 +486,34 @@ class Command:
     def get_ports(self, serial=None) -> list:
         """
         Retrieve serial numbers of SMCP-IV
-        
+
         :param serial: specified serial number of SMCP-IV.
             If you specify a serial number, it will find and return the SMCP-IV for that serial number.\n
             Default value is None.
         :type serial: str
         :return: list of serial numbers of SMCP-IV.
         :rtype: list
-        
+
         .. seealso:: :func:`open`
         """
-        
-        devices = hid.enumerate(self._USB_VID, self._USB_PID)
         found_ports = list()
-        for d in devices:
-            if serial is not None:
-                if d['serial_number'] == serial:
+        self._USB_DEVICES = dict()
+        for pid in self._USB_PID:
+            devices = hid.enumerate(self._USB_VID, pid)
+            for d in devices:
+                if serial is not None:
+                    if d['serial_number'] == serial:
+                        found_ports.append(d['serial_number'])
+                        self._USB_DEVICES[d['serial_number']] = {'vid': self._USB_VID, 'pid': pid}
+                else:
                     found_ports.append(d['serial_number'])
-            else:
-                found_ports.append(d['serial_number'])
+                    self._USB_DEVICES[d['serial_number']] = {'vid': self._USB_VID, 'pid': pid}
         return found_ports
     
     def is_connected(self) -> bool:
         """
         Check the connection with SMCP-IV.
-        
+
         :return: True or False
         :rtype: bool
         """
@@ -520,7 +525,7 @@ class Command:
         
         """
         Register event callback functions.
-        
+
         :param discovery: Callback function for discovery event.\n
             Called when a card is found or lost.
         :type discovery: Callable
@@ -537,19 +542,21 @@ class Command:
     def open(self, port) -> None:
         """
         Connect USB HID Class for SMCP-IV.
-        
+
         :param port: serial number of SMCP-IV.
         :type port: str
         :return: None
         :raise: :class:`IOError`
-        
+
         .. seealso:: :func:`get_ports`
         """
         
         if port is None:
             raise self.Error('Port is None')
         self._s = hid.device()
-        self._s.open(self._USB_VID, self._USB_PID, port)
+        if self._USB_DEVICES[port] is None:
+            raise self.Error('Unknown Serial Number')
+        self._s.open(self._USB_DEVICES[port]['vid'], self._USB_DEVICES[port]['pid'], port)
         
         init_cmds = [0xFF, 0xFF, 0xFF, 0xFF, 0x86, 0x00, 0x08]
         for i in range(8):
@@ -576,7 +583,7 @@ class Command:
     def close(self) -> None:
         """
         Disconnect USB HID Class connection for SMCP-IV.
-        
+
         :return: None
         """
         if self._s is not None:
@@ -626,7 +633,7 @@ class Command:
     def firmware_download(self, stream, fwdn_callback) -> bool:
         """
         Download the firmware for SMCP-IV.
-        
+
         :param stream: stream of firmware binary
         :type stream: typing.io
         :param fwdn_callback: callback function. \n
@@ -635,7 +642,7 @@ class Command:
         :return: If the firmware was successfully transferred, it will return True. \n
             If it fails, it will return False.
         :rtype: bool
-        
+
         :raise: :class:`IOError`
         """
         smp = Message('cmd', 'system', 'download')
@@ -644,7 +651,7 @@ class Command:
         if r['status'] == self.STATUS.GOING_TO_RESET:
             self.mode = 0
             self.close()
-            sleep(0.5)
+            sleep(1.0)
             retry = 100
             while retry > 0:
                 ports = self.get_ports(self.port)
@@ -666,7 +673,7 @@ class Command:
     def buzzer(self, hz, ms) -> STATUS:
         """
         buzzer control in SMCP-IV.
-        
+
         :param hz: 1: 1khz, 2: 2khz, 3: 2.7khz
         :type hz: int
         :param ms: The time the buzzer rings for milliseconds (100 ~ 65535)
@@ -687,7 +694,7 @@ class Command:
     def led(self, blue, red) -> STATUS:
         """
         led control in SMCP-IV.
-        
+
         :param blue: Blue led control. 1: on, 0: off
         :param red: Red led control. 1: on, 0: off
         :return: :class:`STATUS`
@@ -711,7 +718,7 @@ class Command:
     def get_dev_info(self) -> Dict[str, Union[int, Any]]:
         """
         Get version information of SMCP-IV.
-        
+
         :return: status: :class:`STATUS`\n
             If status is :class:`STATUS.SUCCESS`, it has the values defined below:
             \t name: The name of SMCP-IV. This value is always SMCP-IV.\n
@@ -747,7 +754,7 @@ class Command:
     def conf_reactive(self, is_set=True) -> STATUS:
         """
         Set Reactivate.
-        
+
         :param is_set: If True, the SMCP-IV attempts to reactivate the remote device to determine
             if it has been disappeared.\n
             If False, the SMCP-IV does not reactivate after the remote device is first activated.\n
@@ -764,7 +771,7 @@ class Command:
                   start=True) -> STATUS:
         """
         Starts or ends a remote device search.
-        
+
         :param tech: The NFC technology of the remote device to discover.\n
             Default value is (NfcTech.ISO14443A | NfcTech.ISO14443B | NfcTech.ISO18092 | NfcTech.ISO15693)
         :type tech: NfcTech
@@ -784,14 +791,14 @@ class Command:
     def read(self, block) -> Dict[str, Optional[Any]]:
         """
         Reads one block of the card.
-        
+
         :param block: The block number of card.
         :type block: int
         :return: status: :class:`STATUS`\n
             If status is :class:`STATUS.SUCCESS`, it has the values defined below:
             \t data(bytes): Data read from the card.
         :rtype: dict
-        
+
         .. seealso:: :func:`write` :func:`ndef_read` :func:`mifare_read`
         .. note:: This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.
         """
@@ -807,13 +814,13 @@ class Command:
     def write(self, block, data) -> STATUS:
         """
         Writes one block of the card.
-        
+
         :param block: The block number of card.
         :type block: int
         :param data: Data to write the card.
         :type data: bytes
         :return: :class:`STATUS`
-        
+
         .. seealso:: :func:`read` :func:`ndef_write` :func:`mifare_write`
         .. note:: This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.
         """
@@ -826,12 +833,12 @@ class Command:
     def ndef_read(self) -> Dict[str, Optional[Any]]:
         """
         Reads NDEF data from the card.
-        
+
         :return: status: :class:`STATUS`\n
             If status is :class:`STATUS.SUCCESS`, it has the values defined below:
             \t ndef(bytes): NDEF data read from the card.
         :rtype: dict
-        
+
         .. seealso:: :func:`ndef_write` :func:`read` :func:`mifare_read`
         .. note:: This command only corresponds to the Nfc Forum Tag type.
         """
@@ -846,11 +853,11 @@ class Command:
     def ndef_write(self, ndef) -> STATUS:
         """
         Writes NDEF data to the card.
-        
+
         :param ndef: NDEF data to write the card
         :type ndef: bytes
         :return: :class:`STATUS`
-        
+
         .. seealso:: :func:`ndef_read` :func:`write` :func:`mifare_write`
         .. note:: This command only corresponds to the Nfc Forum Tag type.
         """
@@ -863,13 +870,13 @@ class Command:
     def apdu_tranceive(self, capdu) -> Dict[str, Optional[Any]]:
         """
         Exchange APDUs.
-        
+
         :param capdu: The APDU to transfer to the card.
         :type capdu: bytes
         :return: status: :class:`STATUS`\n
             If status is :class:`STATUS.SUCCESS`, it has the values defined below:
             \t data(bytes): APDU received from card
-        
+
         .. note:: This command only corresponds to the application cards.
         """
         smp = Message('cmd', 'nfc', 'apdu_transfer')
@@ -894,7 +901,7 @@ class Command:
     def mifare_auth(self, blk_no, key_type, key) -> STATUS:
         """
         Attempt MiFare card authentication.
-        
+
         :param blk_no: The block number of Mifare card.
         :type blk_no: int
         :param key_type: The key type of the block to be authenticated. If the value is 1, it is Key_A. 2 is Key_B.
@@ -902,7 +909,7 @@ class Command:
         :param key: The key of the block to be authenticated.
         :type key: bytes
         :return: status: :class:`STATUS`
-        
+
         .. seealso:: :func:`mifare_read` :func:`mifare_write` :func:`mifare_increment` :func:`mifare_decrement`
             :func:`mifare_restore` :func:`mifare_transfer`
         .. note:: This command only corresponds to the Mifare Classic.
@@ -923,13 +930,13 @@ class Command:
     def mifare_read(self, blk_no) -> Dict[STATUS, Optional[bytes]]:
         """
         The data read from Mifare card.
-        
+
         :param blk_no: The block number of Mifare card.
         :type blk_no: int
         :return: status: :class:`STATUS`\n
             If status is :class:`STATUS.SUCCESS`, it has the values defined below:
             \t data(bytes): The data read from card
-            
+
         .. seealso:: :func:`mifare_auth` :func:`mifare_write` :func:`mifare_increment` :func:`mifare_decrement`
             :func:`mifare_restore` :func:`mifare_transfer`
         .. note:: This command only corresponds to the Mifare Classic.\n
@@ -947,13 +954,13 @@ class Command:
     def mifare_write(self, blk_no, data) -> STATUS:
         """
         The data writes to Mifare card.
-        
+
         :param blk_no: The block number of Mifare card.
         :type blk_no: int
         :param data: Data to write the card.
         :type data: bytes
         :return: status: :class:`STATUS`
-        
+
         .. seealso:: :func:`mifare_auth` :func:`mifare_read` :func:`mifare_increment` :func:`mifare_decrement`
             :func:`mifare_restore` :func:`mifare_transfer`
         .. note:: This command only corresponds to the Mifare Classic.\n
@@ -968,13 +975,13 @@ class Command:
     def mifare_increment(self, blk_no, value) -> STATUS:
         """
         Increase the value of the block in Mifare.
-        
+
         :param blk_no: The block number of Mifare card.
         :type blk_no: int
         :param value: The value to be increased
         :type value: int
         :return: status: :class:`STATUS`
-        
+
         .. seealso:: :func:`mifare_auth` :func:`mifare_read` :func:`mifare_write` :func:`mifare_decrement`
             :func:`mifare_restore` :func:`mifare_transfer`
         .. note:: This command only corresponds to the Mifare Classic.\n
@@ -995,7 +1002,7 @@ class Command:
         :param value: The value to be decreased
         :type value: int
         :return: status: :class:`STATUS`
-        
+
         .. seealso:: :func:`mifare_auth` :func:`mifare_read` :func:`mifare_write` :func:`mifare_increment`
             :func:`mifare_restore` :func:`mifare_transfer`
         .. note:: This command only corresponds to the Mifare Classic.\n

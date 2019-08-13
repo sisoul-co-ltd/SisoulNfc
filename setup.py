@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='SisoulNfc',
-    version='0.5.2',
+    version='0.5.3',
     packages=['pysisoulnfc'],
     url='http://sisoul.co.kr',
     license='Commercial',
