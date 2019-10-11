@@ -10,6 +10,8 @@ from time import sleep
 
 from multipledispatch import dispatch
 
+from pysisoulnfc.device import Device, Error
+
 """
 SISOUL NFC API
 """
@@ -246,10 +248,8 @@ class Command:
     """
     
     TIME_OUT = 20
-    _USB_VID = 0x31CB
-    _USB_PID = [0x00A1, 0x00A2]
     
-    _USB_DEVICES = dict()
+    _DEVICES = dict()
     
     class STATUS(IntEnum):
         SUCCESS = 0x00  #: Success.
@@ -271,7 +271,8 @@ class Command:
         UNSUPPORTED_TYPE = 0x24  #: the Type is not supported.
         
         TRANSFER_BCC = 0x31  #: BCC error.
-        TRANSFER_PACKET = 32  #: Packet error.
+        TRANSFER_PACKET = 0x32  #: Packet error.
+        TRANSACTION_ERROR = 0x33
         
         NOT_AUTH = 0x41  #: Need Authenticate from Remote Device.
         FROM_REMOTE_DEVICE = 0x42  #: Error from Remote Device.
@@ -346,9 +347,6 @@ class Command:
             
             return self._d
     
-    class Error(Exception):
-        pass
-    
     def __init__(self) -> None:
         self._s = None
         self.port = None
@@ -366,38 +364,24 @@ class Command:
         self._q_evt = Queue()
         
         self.mode = 0
+        self._error = False
+        self._wait_rsp = False
         
         self._callbacks = dict(discovery=None, error=None, debug=None)
     
     def _receive_thread(self):
-        buf = bytes()
-        length = 0
         while not self._terminate:
             try:
-                r = self._s.read(64, 10)
-                if len(r) > 0:
-                    # hex_str = [hex(i) for i in r]
-                    # print(hex_str)
-                    if r[:4] != self._cid:
-                        print('cid invalid')
-                        continue
-                    if length == 0:
-                        if r[4] != 0xD0:
-                            print('command invalid')
-                            continue
-                        length = int.from_bytes(bytes(r[5:7]), 'big')
-                        buf = bytes(r[7:])
-                    else:
-                        buf += bytes(r[5:])
-                    if len(buf) < length:
-                        continue
-                    buf = buf[:length]
-                    length = 0
+                buf = self._s.read()
+                if buf is None:
+                    continue
+                
+                if len(buf) > 0:
                     smp = Message(buf)
                     try:
                         if smp.check_complete_bytes():
                             msg = smp.decode()
-                            if msg['type'] == 'rsp':
+                            if msg['type'] == 'rsp' and self._wait_rsp:
                                 self._q_rsp.put(smp)
                             elif msg['type'] == 'evt':
                                 self._q_evt.put(smp)
@@ -406,8 +390,12 @@ class Command:
             except IOError as e:
                 print(e)
                 # print('Read Error')
-                self._terminate = True
-                self.close()
+                self._error = True
+                to_msg = Message('evt', 'system', 'error', Command.STATUS.TRANSACTION_ERROR)
+                self._q_evt.put(to_msg)
+                if self._wait_rsp:
+                    to_msg = Message('rsp', 'system', 'error', Command.STATUS.TRANSACTION_ERROR)
+                    self._q_rsp.put(to_msg)
                 break
     
     def _event_thread(self):
@@ -433,13 +421,16 @@ class Command:
                 elif msg['gid'] == 'system' and msg['cid'] == 'error':
                     error_func = self._callbacks['error']
                     if callable(error_func):
-                        error_func(msg['status'], msg['payload'])
+                        error_func(msg['status'])
             except Empty:
                 pass
     
     def _send_receive(self, send):
         while not self._q_rsp.empty():  # clear queue.
             self._q_rsp.get()
+        
+        if self._error:
+            return Message('rsp', 'system', 'error', Command.STATUS.TRANSACTION_ERROR)
         
         s = send.decode()
         debug_func = self._callbacks['debug']
@@ -448,24 +439,10 @@ class Command:
         
         try:
             smp_msg = send.encode()
-            length = len(smp_msg)
-            hid_msg = [0xD0, ] + list(length.to_bytes(2, 'big')) + list(send.encode())
-            seq = 0
-            while len(hid_msg) > 0:
-                hid_msg = self._cid + hid_msg
-                if len(hid_msg) > 64:
-                    send_msg = hid_msg[:64]
-                    hid_msg = [seq, ] + hid_msg[64:]
-                    seq += 1
-                    if seq > 127:
-                        seq = 0
-                else:
-                    send_msg = hid_msg[:]
-                    hid_msg.clear()
-                if sys.platform.startswith('win'):
-                    send_msg = [0x00, ] + send_msg
-                self._s.write(send_msg)
+            self._s.write(smp_msg)
+            self._wait_rsp = True
             recv = self._q_rsp.get(timeout=self.TIME_OUT)
+            self._wait_rsp = False
             r = recv.decode()
             if callable(debug_func):
                 debug_func(recv.pprint())
@@ -482,8 +459,14 @@ class Command:
             if callable(debug_func):
                 debug_func(to_msg.pprint())
             return to_msg
+        except Error:
+            to_msg = Message('rsp', s['gid'], s['cid'], Command.STATUS.TRANSACTION_ERROR)
+            if callable(debug_func):
+                debug_func(to_msg.pprint())
+            return to_msg
     
-    def get_ports(self, serial=None) -> list:
+    @staticmethod
+    def get_ports(serial=None) -> list:
         """
         Retrieve serial numbers of SMCP-IV
 
@@ -496,19 +479,8 @@ class Command:
 
         .. seealso:: :func:`open`
         """
-        found_ports = list()
-        self._USB_DEVICES = dict()
-        for pid in self._USB_PID:
-            devices = hid.enumerate(self._USB_VID, pid)
-            for d in devices:
-                if serial is not None:
-                    if d['serial_number'] == serial:
-                        found_ports.append(d['serial_number'])
-                        self._USB_DEVICES[d['serial_number']] = {'vid': self._USB_VID, 'pid': pid}
-                else:
-                    found_ports.append(d['serial_number'])
-                    self._USB_DEVICES[d['serial_number']] = {'vid': self._USB_VID, 'pid': pid}
-        return found_ports
+        
+        return Device.get_ports(serial)
     
     def is_connected(self) -> bool:
         """
@@ -539,7 +511,7 @@ class Command:
         self._callbacks['error'] = error
         self._callbacks['debug'] = debug
     
-    def open(self, port) -> None:
+    def open(self, port: Device) -> None:
         """
         Connect USB HID Class for SMCP-IV.
 
@@ -553,25 +525,12 @@ class Command:
         
         if port is None:
             raise self.Error('Port is None')
-        self._s = hid.device()
-        if self._USB_DEVICES[port] is None:
-            raise self.Error('Unknown Serial Number')
-        self._s.open(self._USB_DEVICES[port]['vid'], self._USB_DEVICES[port]['pid'], port)
         
-        init_cmds = [0xFF, 0xFF, 0xFF, 0xFF, 0x86, 0x00, 0x08]
-        for i in range(8):
-            init_cmds.append(random.randint(0, 255))
-        if sys.platform.startswith('win'):
-            init_cmds = [0x00, ] + init_cmds
-        self._s.write(init_cmds)
-        r = self._s.read(64, 30)
-        if len(r) == 0:
-            raise IOError('Read Fail')
-        
-        self._cid = r[15:19]
-        
+        self._s = port
+        self._s.open()
+        self._error = False
+        self.port = port.serial
         self._terminate = False
-        self.port = port
         self._evt_thread = threading.Thread(target=self._event_thread)
         self._evt_thread.daemon = True
         self._evt_thread.start()
@@ -587,10 +546,12 @@ class Command:
         :return: None
         """
         if self._s is not None:
-            if self.mode == 1:
-                self.discovery(start=False)
-            elif self.mode == 2:
-                self.emv(2)
+            if not self._error:
+                if self.mode == 1:
+                    self.discovery(start=False)
+                elif self.mode == 2:
+                    self.emv(2)
+            self.mode = 0
             self._terminate = True
             if self._recv_thread is not None:
                 self._recv_thread.join()
@@ -662,7 +623,7 @@ class Command:
             if retry == 0:
                 return False
             try:
-                self.open(self.port)
+                self.open(ports[0])
             except IOError as e:
                 print(e)
                 return False
@@ -734,12 +695,12 @@ class Command:
         r = smp.decode()
         ret = dict(status=r['status'])
         if r['status'] == self.STATUS.SUCCESS:
-            ret['name'] = r['payload'][0:9].decode(encoding='ascii')
+            ret['name'] = r['payload'][0:9].decode(encoding='ascii').replace('\x00', '')
             ret['major'] = int.from_bytes(r['payload'][9:10], 'little')
             ret['minor'] = int.from_bytes(r['payload'][10:11], 'little')
             ret['build'] = int.from_bytes(r['payload'][11:15], 'little')
-            ret['date'] = r['payload'][15:27].decode(encoding='ascii')
-            ret['time'] = r['payload'][27:36].decode(encoding='ascii')
+            ret['date'] = r['payload'][15:27].decode(encoding='ascii').replace('\x00', '')
+            ret['time'] = r['payload'][27:36].decode(encoding='ascii').replace('\x00', '')
         return ret
     
     def set_serial(self, str_serial) -> bool:
