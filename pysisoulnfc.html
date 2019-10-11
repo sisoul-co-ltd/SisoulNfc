@@ -168,12 +168,6 @@
 <em class="property">class </em><code class="descclassname">pysisoulnfc.nfc.</code><code class="descname">Command</code><a class="headerlink" href="#pysisoulnfc.nfc.Command" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>NFC Control API</p>
-<dl class="exception">
-<dt id="pysisoulnfc.nfc.Command.Error">
-<em class="property">exception </em><code class="descname">Error</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.Error" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a></p>
-</dd></dl>
-
 <dl class="class">
 <dt id="pysisoulnfc.nfc.Command.NfcTagAppType1">
 <em class="property">class </em><code class="descname">NfcTagAppType1</code><a class="headerlink" href="#pysisoulnfc.nfc.Command.NfcTagAppType1" title="Permalink to this definition">¶</a></dt>
@@ -421,7 +415,7 @@
 
 <dl class="attribute">
 <dt id="pysisoulnfc.nfc.Command.STATUS.TRANSFER_PACKET">
-<code class="descname">TRANSFER_PACKET</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.TRANSFER_PACKET" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TRANSFER_PACKET</code><em class="property"> = 50</em><a class="headerlink" href="#pysisoulnfc.nfc.Command.STATUS.TRANSFER_PACKET" title="Permalink to this definition">¶</a></dt>
 <dd><p>Packet error.</p>
 </dd></dl>
 
@@ -602,9 +596,9 @@ if it has been disappeared.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="staticmethod">
 <dt id="pysisoulnfc.nfc.Command.get_ports">
-<code class="descname">get_ports</code><span class="sig-paren">(</span><em>serial=None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#pysisoulnfc.nfc.Command.get_ports" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_ports</code><span class="sig-paren">(</span><em>serial=None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#pysisoulnfc.nfc.Command.get_ports" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve serial numbers of SMCP-IV</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -893,7 +887,7 @@ If you specify a serial number, it will find and return the SMCP-IV for that ser
 
 <dl class="method">
 <dt id="pysisoulnfc.nfc.Command.open">
-<code class="descname">open</code><span class="sig-paren">(</span><em>port</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.nfc.Command.open" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open</code><span class="sig-paren">(</span><em>port: pysisoulnfc.device.Device</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.nfc.Command.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect USB HID Class for SMCP-IV.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -993,6 +987,826 @@ If you specify a serial number, it will find and return the SMCP-IV for that ser
 <div class="section" id="module-pysisoulnfc">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pysisoulnfc" title="Permalink to this headline">¶</a></h2>
 <p>SISOUL NFC Module - SMCP-IV</p>
+<dl class="class">
+<dt id="pysisoulnfc.Command">
+<em class="property">class </em><code class="descclassname">pysisoulnfc.</code><code class="descname">Command</code><a class="headerlink" href="#pysisoulnfc.Command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>NFC Control API</p>
+<dl class="class">
+<dt id="pysisoulnfc.Command.NfcTagAppType1">
+<em class="property">class </em><code class="descname">NfcTagAppType1</code><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type1 Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppType1.TOPAZ_DYNAMIC">
+<code class="descname">TOPAZ_DYNAMIC</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType1.TOPAZ_DYNAMIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topaz dynamic memory structure.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppType1.TOPAZ_STATIC">
+<code class="descname">TOPAZ_STATIC</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType1.TOPAZ_STATIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topaz static memory structure.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.Command.NfcTagAppType2">
+<em class="property">class </em><code class="descname">NfcTagAppType2</code><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type2 Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppType2.MIFARE_UL">
+<code class="descname">MIFARE_UL</code><em class="property"> = 33</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType2.MIFARE_UL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Ultralight</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppType2.MIFARE_ULC">
+<code class="descname">MIFARE_ULC</code><em class="property"> = 35</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppType2.MIFARE_ULC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Ultralight C</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic">
+<em class="property">class </em><code class="descname">NfcTagAppTypeMiFareClassic</code><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>Mifare Classic Applications.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_1K">
+<code class="descname">MIFARE_1K</code><em class="property"> = 18</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_1K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Classic 1K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_4K">
+<code class="descname">MIFARE_4K</code><em class="property"> = 19</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Classic 4K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_MINI">
+<code class="descname">MIFARE_MINI</code><em class="property"> = 17</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_MINI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Mini.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_2K">
+<code class="descname">MIFARE_PLUS_2K</code><em class="property"> = 20</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_2K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus 2K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_4K">
+<code class="descname">MIFARE_PLUS_4K</code><em class="property"> = 21</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus 4K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_2K">
+<code class="descname">MIFARE_PLUS_SL2_2K</code><em class="property"> = 23</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_2K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus SL2 2K</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_4K">
+<code class="descname">MIFARE_PLUS_SL2_4K</code><em class="property"> = 22</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagAppTypeMiFareClassic.MIFARE_PLUS_SL2_4K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mifare Plus SL2 4K</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.Command.NfcTagType">
+<em class="property">class </em><code class="descname">NfcTagType</code><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Tag Type.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagType.TYPE1">
+<code class="descname">TYPE1</code><em class="property"> = 1</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType.TYPE1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type1 Tag is compatible Topaz</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagType.TYPE2">
+<code class="descname">TYPE2</code><em class="property"> = 2</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType.TYPE2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type2 Tag is compatible Mifare Family (UL, ULC, Classic)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagType.TYPE3">
+<code class="descname">TYPE3</code><em class="property"> = 4</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType.TYPE3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type3 Tag is compatible Felica.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagType.TYPE4">
+<code class="descname">TYPE4</code><em class="property"> = 8</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType.TYPE4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type4 Tag is compatible Application Type Card (VISA, MASTER, T-Money, Cashbee..)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTagType.TYPE5">
+<code class="descname">TYPE5</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTagType.TYPE5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Type5 Tag is compatible ICODE SLI(x), Tag-It HF-I</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.Command.NfcTech">
+<em class="property">class </em><code class="descname">NfcTech</code><a class="headerlink" href="#pysisoulnfc.Command.NfcTech" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>NFC Technology Protocol</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTech.ISO14443A">
+<code class="descname">ISO14443A</code><em class="property"> = 16</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTech.ISO14443A" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO14443A (NFC-A)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTech.ISO14443B">
+<code class="descname">ISO14443B</code><em class="property"> = 32</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTech.ISO14443B" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO14443B (NFC-B)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTech.ISO15693">
+<code class="descname">ISO15693</code><em class="property"> = 128</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTech.ISO15693" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO15693 (NFC-V)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.NfcTech.ISO18092">
+<code class="descname">ISO18092</code><em class="property"> = 64</em><a class="headerlink" href="#pysisoulnfc.Command.NfcTech.ISO18092" title="Permalink to this definition">¶</a></dt>
+<dd><p>ISO18092 (NFC-F)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pysisoulnfc.Command.STATUS">
+<em class="property">class </em><code class="descname">STATUS</code><a class="headerlink" href="#pysisoulnfc.Command.STATUS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
+<p>An enumeration.</p>
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.FAILURE">
+<code class="descname">FAILURE</code><em class="property"> = 17</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Failure</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.FROM_REMOTE_DEVICE">
+<code class="descname">FROM_REMOTE_DEVICE</code><em class="property"> = 66</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.FROM_REMOTE_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error from Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.GOING_TO_RESET">
+<code class="descname">GOING_TO_RESET</code><em class="property"> = 128</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.GOING_TO_RESET" title="Permalink to this definition">¶</a></dt>
+<dd><p>SMCP reset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.INVALID_PARAM">
+<code class="descname">INVALID_PARAM</code><em class="property"> = 21</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.INVALID_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter is invalid.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.LOST_REMOTE_DEVICE">
+<code class="descname">LOST_REMOTE_DEVICE</code><em class="property"> = 81</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.LOST_REMOTE_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lost Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.NDEF_READ_FAIL">
+<code class="descname">NDEF_READ_FAIL</code><em class="property"> = 67</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.NDEF_READ_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>NDEF Read fail.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.NDEF_WRITE_FAIL">
+<code class="descname">NDEF_WRITE_FAIL</code><em class="property"> = 68</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.NDEF_WRITE_FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>NDEF Write fail.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.NOT_AUTH">
+<code class="descname">NOT_AUTH</code><em class="property"> = 65</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.NOT_AUTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Need Authenticate from Remote Device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.OK">
+<code class="descname">OK</code><em class="property"> = 1</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Okay!! but it’s not complete process.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.REJECT_COMMAND">
+<code class="descname">REJECT_COMMAND</code><em class="property"> = 20</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.REJECT_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejected command from SMCP.</p>
+<p>ex) Send command the discovery start if already started.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.SUCCESS">
+<code class="descname">SUCCESS</code><em class="property"> = 0</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Success.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.SYSTEM_MEMORY">
+<code class="descname">SYSTEM_MEMORY</code><em class="property"> = 18</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.SYSTEM_MEMORY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Out of memory in SMCP</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.TIMED_OUT">
+<code class="descname">TIMED_OUT</code><em class="property"> = 22</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.TIMED_OUT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Response timed out.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.TRANSFER_BCC">
+<code class="descname">TRANSFER_BCC</code><em class="property"> = 49</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.TRANSFER_BCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>BCC error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.TRANSFER_PACKET">
+<code class="descname">TRANSFER_PACKET</code><em class="property"> = 50</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.TRANSFER_PACKET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Packet error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNKNOWN">
+<code class="descname">UNKNOWN</code><em class="property"> = 255</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown Error.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNSUPPORTED_COMMAND">
+<code class="descname">UNSUPPORTED_COMMAND</code><em class="property"> = 34</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNSUPPORTED_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Command is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNSUPPORTED_FUNCTION">
+<code class="descname">UNSUPPORTED_FUNCTION</code><em class="property"> = 19</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNSUPPORTED_FUNCTION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNSUPPORTED_GROUP">
+<code class="descname">UNSUPPORTED_GROUP</code><em class="property"> = 33</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNSUPPORTED_GROUP" title="Permalink to this definition">¶</a></dt>
+<dd><p>the GID is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNSUPPORTED_PARAM">
+<code class="descname">UNSUPPORTED_PARAM</code><em class="property"> = 35</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNSUPPORTED_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Parameter is not supported.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysisoulnfc.Command.STATUS.UNSUPPORTED_TYPE">
+<code class="descname">UNSUPPORTED_TYPE</code><em class="property"> = 36</em><a class="headerlink" href="#pysisoulnfc.Command.STATUS.UNSUPPORTED_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd><p>the Type is not supported.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.apdu_tranceive">
+<code class="descname">apdu_tranceive</code><span class="sig-paren">(</span><em>capdu</em><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.Command.apdu_tranceive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exchange APDUs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>capdu</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – The APDU to transfer to the card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="pysisoulnfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): APDU received from card</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the application cards.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.buzzer">
+<code class="descname">buzzer</code><span class="sig-paren">(</span><em>hz</em>, <em>ms</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.buzzer" title="Permalink to this definition">¶</a></dt>
+<dd><p>buzzer control in SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hz</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – 1: 1khz, 2: 2khz, 3: 2.7khz</p></li>
+<li><p><strong>ms</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The time the buzzer rings for milliseconds (100 ~ 65535)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.Command.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect USB HID Class connection for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.conf_reactive">
+<code class="descname">conf_reactive</code><span class="sig-paren">(</span><em>is_set=True</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.conf_reactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set Reactivate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_set</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – <p>If True, the SMCP-IV attempts to reactivate the remote device to determine
+if it has been disappeared.</p>
+<p>If False, the SMCP-IV does not reactivate after the remote device is first activated.</p>
+<p>In this case, you do not know if the remote device has disappeared.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.discovery">
+<code class="descname">discovery</code><span class="sig-paren">(</span><em>tech=240</em>, <em>start=True</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.discovery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts or ends a remote device search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tech</strong> (<a class="reference internal" href="#pysisoulnfc.nfc.Command.NfcTech" title="pysisoulnfc.nfc.Command.NfcTech"><em>NfcTech</em></a>) – <p>The NFC technology of the remote device to discover.</p>
+<p>Default value is (NfcTech.ISO14443A | NfcTech.ISO14443B | NfcTech.ISO18092 | NfcTech.ISO15693)</p>
+</p></li>
+<li><p><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)"><em>bool</em></a>) – If True, start the discover. Or False to stop the discover.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.firmware_download">
+<code class="descname">firmware_download</code><span class="sig-paren">(</span><em>stream</em>, <em>fwdn_callback</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pysisoulnfc.Command.firmware_download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the firmware for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stream</strong> (<em>typing.io</em>) – stream of firmware binary</p></li>
+<li><p><strong>fwdn_callback</strong> (<em>function</em>) – <p>callback function.</p>
+<p>This function will be called with the length transmitted when one packet is complete.</p>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>If the firmware was successfully transferred, it will return True.</p>
+<p>If it fails, it will return False.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+<dt class="field-even">Raise</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.get_dev_info">
+<code class="descname">get_dev_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict[str, Union[int, Any]]<a class="headerlink" href="#pysisoulnfc.Command.get_dev_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get version information of SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl>
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="pysisoulnfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>name: The name of SMCP-IV. This value is always SMCP-IV.</p>
+<p>major: It is a major version of the SMCP-IV firmware.</p>
+<p>minor: It is a minor version of the SMCP-IV firmware.</p>
+<p>build: It is a build number of the SMCP-IV firmware version.</p>
+<p>date: This is the date the SMCP-IV firmware was built.</p>
+<p>time: This is the time the SMCP-IV firmware was built.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="pysisoulnfc.Command.get_ports">
+<em class="property">static </em><code class="descname">get_ports</code><span class="sig-paren">(</span><em>serial=None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#pysisoulnfc.Command.get_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve serial numbers of SMCP-IV</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>serial</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – <p>specified serial number of SMCP-IV.
+If you specify a serial number, it will find and return the SMCP-IV for that serial number.</p>
+<p>Default value is None.</p>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of serial numbers of SMCP-IV.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.7)">list</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.open" title="pysisoulnfc.Command.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#pysisoulnfc.Command.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the connection with SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.7)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.led">
+<code class="descname">led</code><span class="sig-paren">(</span><em>blue</em>, <em>red</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.led" title="Permalink to this definition">¶</a></dt>
+<dd><p>led control in SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blue</strong> – Blue led control. 1: on, 0: off</p></li>
+<li><p><strong>red</strong> – Red led control. 1: on, 0: off</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_auth">
+<code class="descname">mifare_auth</code><span class="sig-paren">(</span><em>blk_no</em>, <em>key_type</em>, <em>key</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_auth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attempt MiFare card authentication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>key_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The key type of the block to be authenticated. If the value is 1, it is Key_A. 2 is Key_B.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – The key of the block to be authenticated.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_decrement">
+<code class="descname">mifare_decrement</code><span class="sig-paren">(</span><em>blk_no</em>, <em>value</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_decrement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrease the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The value to be decreased</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_increment">
+<code class="descname">mifare_increment</code><span class="sig-paren">(</span><em>blk_no</em>, <em>value</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_increment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increase the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The value to be increased</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_read">
+<code class="descname">mifare_read</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; Dict[pysisoulnfc.nfc.Command.STATUS, Optional[bytes]]<a class="headerlink" href="#pysisoulnfc.Command.mifare_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data read from Mifare card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="pysisoulnfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): The data read from card</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_restore">
+<code class="descname">mifare_restore</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_restore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_transfer">
+<code class="descname">mifare_transfer</code><span class="sig-paren">(</span><em>blk_no</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_transfer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the value of the block in Mifare.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.mifare_write">
+<code class="descname">mifare_write</code><span class="sig-paren">(</span><em>blk_no</em>, <em>data</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.mifare_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>The data writes to Mifare card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blk_no</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of Mifare card.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – Data to write the card.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_increment" title="pysisoulnfc.Command.mifare_increment"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_increment()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_decrement" title="pysisoulnfc.Command.mifare_decrement"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_decrement()</span></code></a>
+<a class="reference internal" href="#pysisoulnfc.Command.mifare_restore" title="pysisoulnfc.Command.mifare_restore"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_restore()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_transfer" title="pysisoulnfc.Command.mifare_transfer"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_transfer()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Mifare Classic.</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.mifare_auth" title="pysisoulnfc.Command.mifare_auth"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_auth()</span></code></a> must precede this command.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.ndef_read">
+<code class="descname">ndef_read</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.Command.ndef_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads NDEF data from the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="pysisoulnfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>ndef(bytes): NDEF data read from the card.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.ndef_write" title="pysisoulnfc.Command.ndef_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.read" title="pysisoulnfc.Command.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Nfc Forum Tag type.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.ndef_write">
+<code class="descname">ndef_write</code><span class="sig-paren">(</span><em>ndef</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.ndef_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes NDEF data to the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ndef</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – NDEF data to write the card</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.ndef_read" title="pysisoulnfc.Command.ndef_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.write" title="pysisoulnfc.Command.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command only corresponds to the Nfc Forum Tag type.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.open">
+<code class="descname">open</code><span class="sig-paren">(</span><em>port: pysisoulnfc.device.Device</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.Command.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect USB HID Class for SMCP-IV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>port</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.7)"><em>str</em></a>) – serial number of SMCP-IV.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raise</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#IOError" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOError</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.get_ports" title="pysisoulnfc.Command.get_ports"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_ports()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>block</em><span class="sig-paren">)</span> &#x2192; Dict[str, Optional[Any]]<a class="headerlink" href="#pysisoulnfc.Command.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads one block of the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of card.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>status: <a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+<dl class="simple">
+<dt>If status is <a class="reference internal" href="#pysisoulnfc.Command.STATUS.SUCCESS" title="pysisoulnfc.Command.STATUS.SUCCESS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS.SUCCESS</span></code></a>, it has the values defined below:</dt><dd><p>data(bytes): Data read from the card.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.7)">dict</a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.write" title="pysisoulnfc.Command.write"><code class="xref py py-func docutils literal notranslate"><span class="pre">write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.ndef_read" title="pysisoulnfc.Command.ndef_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_read" title="pysisoulnfc.Command.mifare_read"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_read()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.set_callbacks">
+<code class="descname">set_callbacks</code><span class="sig-paren">(</span><em>discovery: Callable[[int, dict], None] = None, error: Callable[[int, bytes], None] = None, debug: Callable[[int, str], None] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#pysisoulnfc.Command.set_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register event callback functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>discovery</strong> (<em>Callable</em>) – <p>Callback function for discovery event.</p>
+<p>Called when a card is found or lost.</p>
+</p></li>
+<li><p><strong>error</strong> (<em>Callable</em>) – Callback function for error event.</p></li>
+<li><p><strong>debug</strong> (<em>Callable</em>) – Callback function for debug messages sent from SMCP-IV.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysisoulnfc.Command.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>block</em>, <em>data</em><span class="sig-paren">)</span> &#x2192; pysisoulnfc.nfc.Command.STATUS<a class="headerlink" href="#pysisoulnfc.Command.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes one block of the card.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.7)"><em>int</em></a>) – The block number of card.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(in Python v3.7)"><em>bytes</em></a>) – Data to write the card.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#pysisoulnfc.Command.STATUS" title="pysisoulnfc.Command.STATUS"><code class="xref py py-class docutils literal notranslate"><span class="pre">STATUS</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#pysisoulnfc.Command.read" title="pysisoulnfc.Command.read"><code class="xref py py-func docutils literal notranslate"><span class="pre">read()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.ndef_write" title="pysisoulnfc.Command.ndef_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">ndef_write()</span></code></a> <a class="reference internal" href="#pysisoulnfc.Command.mifare_write" title="pysisoulnfc.Command.mifare_write"><code class="xref py py-func docutils literal notranslate"><span class="pre">mifare_write()</span></code></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command corresponds to Type 1, Type 2 (except Mifare Classic), and Type 3 cards.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
