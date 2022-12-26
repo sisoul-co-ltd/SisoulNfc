@@ -1,4 +1,4 @@
 Cython==0.29.7
 hidapi==0.7.99.post21
 multipledispatch==0.6.0
-wheel==0.33.4
+wheel==0.38.1
